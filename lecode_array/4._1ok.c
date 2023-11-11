@@ -3,22 +3,25 @@
 void rotate(int** matrix, int n)
 {
     int i,j;
+    int tmp=0;
     
-    int matrix_new[100][100];
+   // int matrix_new[100][100];
     for(i=0;i<n;i++){
 for(j=0;j<n;j++){
-    matrix_new[i][j]=matrix[i][j];
+    tmp=matrix[i][j];
+    matrix[i][j]=matrix[j][i];
+    matrix[j][i]=tmp;
 }
     }
-  for(i=0;i<n;i++){
+    for(i=0;i<n/2;i++){
 for(j=0;j<n;j++){
-   matrix[j][n-i-1]=matrix_new[i][j];//每行有n个数
-   
-
-  }
+    tmp=matrix[i][j];
+    matrix[i][j]=matrix[i][n-j-1];
+    matrix[i][n-j-1]=tmp;
 }
+    }
 }
-int main(){
+    int main(){
     int n,i,j;
     scanf("%d",&n);
     // int **a=(int **)malloc(n*n*sizeof(a[0]));
@@ -28,24 +31,24 @@ int main(){
         a[i] = (int *)malloc(n * sizeof(int));
     }
 
-    // int **b = (int **)malloc(n * sizeof(int *));
-    // for (i = 0; i < n; i++) {
-    //     b[i] = (int *)malloc(n * sizeof(int));
-    // }
+    int **b = (int **)malloc(n * sizeof(int *));
+    for (i = 0; i < n; i++) {
+        b[i] = (int *)malloc(n * sizeof(int));
+    }
     for(i=0;i<n;i++){
 for(j=0;j<n;j++){
     scanf("%d",&a[i][j]);
 }
     }
-    rotate(a, n);
     for(i=0;i<n;i++){
 for(j=0;j<n;j++){
     
     printf("%d ",a[i][j]);
 }
+rotate(a, n);
 printf("\n");
     }
 free(a);
-//free(b);
+free(b);
 return 0;
 }

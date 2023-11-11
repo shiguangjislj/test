@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-int removeDuplicates(int *nums, int n)
+#include <stdlib.h>//不严格有序数列移除相等的数
+int removeDuplicates(int *nums, int n)//使用指针nums变化主函数可检测到
 {
     int i, j, a, sum, k=0;
     int *res = (int *)malloc(n * sizeof(int));
@@ -23,27 +23,7 @@ int removeDuplicates(int *nums, int n)
             k++;
         // }
         HH:
-        // for (j = i+1; j < n ; j++)
-        // {
-
-        //     if (nums[i] == nums[j])
-        //     {
-        //         nums[j] = a;
-        //     }
-
-        //     if (nums[i] == a)
-        //     {
-        //         sum++;
-        //         for (k = i; k < n - sum; k++)
-        //         {
-        //             nums[k] = nums[k + 1];
-        //         }
-        //         for (i = 0; i = n - sum; i++)
-        //         {
-        //             nums[i];
-        //         }
-        //     }
-        // }
+       
     }
      for ( j = 0; j < k ; j++){
         nums[j]= res[j];
@@ -73,6 +53,8 @@ int main()
     // printf("%d",nums);
     // printf("%d", n - sum);
     printf("%d", len);
+    for (i=0;i<len;i++)
+    printf("%d ",nums[i]);
     free(nums);
     return 0;
 }
